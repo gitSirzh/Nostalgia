@@ -1,0 +1,30 @@
+
+//---- Navigator ----//
+
+//加载新页面
+push('new',New)
+//返回上个页面
+pop()
+//指定页面返回 *注：一定要是加载过得页面（不然对应的 index 没有）
+popToRouteIndex()
+//返回Navigator导航顶部（index = 0的页面，就是第一个）
+popToTop()
+
+
+//导航条 backCallback左边的返回箭头/没有此参数时，可以加自定义布局覆盖  centerColor背景色  title名称
+<Navbar backCallback={()=>{pop()}} centerColor={'#0882ff'} textColor={'#fff'} title ={'首页'} />
+
+//---- 弹窗 ----//
+//提示语弹窗
+send('showBlackAlert', {show: true, title: '我是提示语弹窗'});
+//图片弹窗 -- 切换弹窗图片路径在：z_model 下的 imgModelAlter.js 里面切换
+send('imgModalAlter');
+//单选弹窗 调取参数global.alertData.money  callback:(money)=>获取点击按钮的参数的返回值“money”
+send('showModelAlert', {
+        callback:(money)=>{this.setState({money:money});},
+        btntext:global.alertData.money
+    }
+)
+//加载弹窗
+send('loading',{show:true,title:'加载中'});   //** 打开 **// 不传参数默认为 “加载中...”
+send('loading',{show:false});   //** 关闭 **//
