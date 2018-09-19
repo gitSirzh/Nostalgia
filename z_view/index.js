@@ -97,7 +97,7 @@ export default class index extends Component {
                                 <Text style={styles.text}>恒哥说过:</Text>
                             </View>
                             <View style={styles.slide2}>
-                                <Text style={styles.text}>要好好学学习</Text>
+                                <Text style={styles.text}>要好好学习</Text>
                             </View>
                             <View style={styles.slide3}>
                                 <Text style={styles.text}>天天向上哟！</Text>
