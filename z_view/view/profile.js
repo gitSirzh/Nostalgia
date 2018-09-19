@@ -5,7 +5,7 @@ import {
     Text,
     TouchableOpacity,
     Image,
-    ScrollView
+    ScrollView, Platform, BackAndroid
 } from 'react-native';
 import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
 import {push,pop} from "../../z_util/navigator";
@@ -20,13 +20,19 @@ export default class profile extends Component {
         }
     }
     componentWillMount () {
-
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress',this.onBack);
+        }
+    }
+    onBack = () =>{
+        pop();
+        return true;
     }
     render() {
         return (
             <View style={{width:width,height:height,backgroundColor:backgroundGray}}>
                 {/*导航条*/}
-                <Navbar backCallback={()=>{pop()}}  textColor={'#fff'} title ={'关于作者'} />
+                <Navbar backCallback={this.onBack}  textColor={'#fff'} title ={'关于作者'} />
                 {/*阴影*/}
                 <Image source={require('../img/yinying.jpg')} style={{width:width,height:38/1125*width}}/>
                 <ScrollView>

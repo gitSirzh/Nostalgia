@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     Image,
     ScrollView,
-    AsyncStorage,
+    AsyncStorage, Platform, BackAndroid,
 } from 'react-native';
 import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
 import {push,pop} from "../../z_util/navigator";
@@ -23,12 +23,19 @@ export default class stylesBG extends Component {
     }
     componentWillMount () {
         this.setState({bgcolor:this.props.bgc});
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress',this.onBack);
+        }
+    }
+    onBack = () =>{
+        pop();
+        return true;
     }
     render() {
         return (
             <View style={{width:width,height:height,backgroundColor:backgroundGray}}>
                 {/*导航条*/}
-                <Navbar backCallback={()=>{pop()}} textColor={'#fff'} title={'皮肤风格'} />
+                <Navbar backCallback={this.onBack} textColor={'#fff'} title={'皮肤风格'} />
                 {/*阴影*/}
                 {/*<Image source={require('../img/yinying.jpg')} style={{width:width,height:38/1125*width}}/>*/}
                 <ScrollView>

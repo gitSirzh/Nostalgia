@@ -6,9 +6,9 @@
 
 import React,{Component} from 'react';
 
-import ReactNative, {AsyncStorage} from 'react-native';
+import ReactNative, {AsyncStorage, BackAndroid, Platform} from 'react-native';
 //react native
-var {View, StyleSheet, StatusBar,AppState,Clipboard,Alert} = ReactNative;
+var {View, StyleSheet, StatusBar,AppState,Clipboard} = ReactNative;
 
 //import SharePopLayer from '../z_model/sharePopLayer'     //分享 QQ好友  QQ空间
 
@@ -20,7 +20,7 @@ import {Navigator} from 'react-native-deprecated-custom-components';
 
 //import HotUpdate from '../z_view/hotUpdate';  //下载进度
 
-import {push, setNavigator} from '../z_util/navigator';
+import {pop, push, setNavigator} from '../z_util/navigator';
 //import {setContainerVersion} from '../z_model/version'
 import {removeNativeEvent,listen,remove,send} from '../z_util/eventDispatcher';
 //import {getContainerVersion,tryUpdate} from '../z_native/version';
@@ -269,8 +269,7 @@ export default class main extends Component {
         remove('showBlackAlert');
         remove("showHotUpdate");
         remove('showQRCode');
-        //removeNativeEvent("androidBackSelect");
-
+        removeNativeEvent("androidBackSelect");
     }
 }
 

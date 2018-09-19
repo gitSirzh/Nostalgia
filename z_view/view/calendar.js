@@ -8,7 +8,7 @@ import {
     Image,
     Animated,
     ScrollView,
-    ImageBackground
+    ImageBackground, Platform, BackAndroid
 } from 'react-native';
 import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
 import {push,pop} from "../../z_util/navigator";
@@ -35,7 +35,13 @@ export default class calendar extends Component {
         this.spinValue = new Animated.Value(0); //初始化动画
     }
     componentWillMount () {
-
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress',this.onBack);
+        }
+    }
+    onBack = () =>{
+        pop();
+        return true;
     }
 
     //旋转
@@ -70,7 +76,7 @@ export default class calendar extends Component {
                 style={{width:width,height:height}}
             >
                 {/*导航条*/}
-                <Navbar backCallback={()=>{pop()}} textColor={'#fff'} title ={'农历小册子'} renderRight={this.renderRight.bind(this)}/>
+                <Navbar backCallback={this.onBack} textColor={'#fff'} title ={'农历小册子'} renderRight={this.renderRight.bind(this)}/>
                 <View style={{justifyContent:'center',alignItems:'center'}}>
                     <View style={{height:60*heightRatio}}/>
                     {/*年月日 星期*/}

@@ -6,7 +6,7 @@ import {
     ScrollView,
     Alert,
     TouchableOpacity,
-    FlatList
+    FlatList, Platform, BackAndroid
 } from 'react-native';
 import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
 import {push,pop} from "../../z_util/navigator";
@@ -24,14 +24,20 @@ export default class iconAggregate extends Component {
 
     }
     componentWillMount () {
-
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress',this.onBack);
+        }
+    }
+    onBack = () =>{
+        pop();
+        return true;
     }
 
     render() {
         return (
             <View style={{width:width,height:height}}>
                 {/*导航条*/}
-                <Navbar backCallback={()=>{pop()}} textColor={'#fff'} title ={'Icon'} />
+                <Navbar backCallback={this.onBack} textColor={'#fff'} title ={'Icon'} />
                 <ScrollView style={{width:width}}>
                     <View style={{backgroundColor:'#8B8989',width:width,flexDirection:'row',flexWrap:'wrap'}}>
                     {

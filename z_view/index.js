@@ -5,11 +5,11 @@ import {
     Text,
     TouchableOpacity,
     Image,
-    ScrollView,
+    ScrollView, Platform, BackAndroid,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import {height, heightRatio, topHeight, width, widthRatio} from "../z_util/device";
-import {push} from "../z_util/navigator";
+import {pop, push} from "../z_util/navigator";
 import Navbar from "../z_model/navbar";
 import {backgroundGray, main} from "../z_util/color";
 
@@ -38,7 +38,27 @@ export default class index extends Component {
         //延迟获取主题颜色（解决异步问题）,目的在0.5面之后更新一次state触发重新渲染一次
         setTimeout(()=>{
             this.setState({colors:global.colors});
+
         },300);
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress',this.onBack);
+        }
+    }
+
+    onBack = () =>{
+        //抽屉是否打开/存在 存在/不存在都关闭抽屉
+        this.props.navigation.closeDrawer()?this.props.navigation.closeDrawer():this.props.navigation.closeDrawer();
+
+        //进行时间处理
+        let time = new Date();
+        this.lastBackPressed = this.thisBackPressed;
+        this.thisBackPressed = time.getTime();
+        if (this.lastBackPressed && this.lastBackPressed + 2000 >= this.thisBackPressed) {
+            //最近2秒内按过back键，可以退出应用。
+            return false;
+        }
+        send('showBlackAlert', {show:true,title:"再按一次退出应用"});
+        return true;
     }
 
     renderLeft(){
@@ -228,6 +248,12 @@ export default class index extends Component {
     }
     componentDidMount() {
 
+    }
+    componentWillUnmount() {
+        //移除物理返回键监听
+        if (Platform.OS === 'android') {
+            BackAndroid.removeEventListener('hardwareBackPress', this.onBack);
+        }
     }
 }
 

@@ -6,12 +6,12 @@ import {
     TouchableOpacity,
     KeyboardAvoidingView,
     TextInput,
-    Image,
-    Keyboard,
-    ScrollView
+    BackAndroid,
+    Platform,
+    Keyboard
 } from 'react-native';
 import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
-import {push,pop} from "../../z_util/navigator";
+import {push,pop,popToRouteIndex} from "../../z_util/navigator";
 import Navbar from "../../z_model/navbar";
 import {send} from "../../z_util/eventDispatcher";
 
@@ -26,19 +26,21 @@ export default class siri extends Component {
         }
     }
     componentWillMount () {
-
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress',this.onBack);
+        }
     }
-    setModalVisible(visible) {
-        this.setState({modalVisible: visible});
+    onBack = () =>{
+        pop();
+        return true;
     }
-
     render() {
         return (
             <KeyboardAvoidingView behavior='position' >
                 <TouchableOpacity activeOpacity={1} onPress={()=>{Keyboard.dismiss()}}>
                     <View style={{width:width,height:height,backgroundColor:global.colors}}>
                         {/*导航条*/}
-                        <Navbar backCallback={()=>{pop()}} centerColor={'rgba(0,0,0,0)'} textColor={'#fff'} title ={'偶是盗版 Siri'} />
+                        <Navbar backCallback={this.onBack} centerColor={'rgba(0,0,0,0)'} textColor={'#fff'} title ={'偶是盗版 Siri'} />
                         <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
                             <View style={{width:width-20*widthRatio,justifyContent:'center',alignItems:'center'}}>
                                 <Text style={{fontSize: 20*widthRatio,color:'#fff',fontWeight: '300'}}>{this.state.siri_speak}</Text>
@@ -105,6 +107,11 @@ export default class siri extends Component {
             send('loading',{show:false});
         }, 3000);
     }
+    // componentWillUnmount() {
+    //     if (Platform.OS === 'android') {
+    //         BackAndroid.removeEventListener('hardwareBackPress', this.onBack);
+    //     }
+    // }
 }
 
 const styles = StyleSheet.create({

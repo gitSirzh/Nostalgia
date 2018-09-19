@@ -8,7 +8,7 @@ import {
     TextInput,
     Image,
     Keyboard,
-    ScrollView
+    ScrollView, Platform, BackAndroid
 } from 'react-native';
 import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
 import {push,pop} from "../../z_util/navigator";
@@ -41,7 +41,13 @@ export default class weather extends Component {
         }
     }
     componentWillMount () {
-
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress',this.onBack);
+        }
+    }
+    onBack = () =>{
+        pop();
+        return true;
     }
     setModalVisible(visible) {
         this.setState({modalVisible: visible});
@@ -70,7 +76,7 @@ export default class weather extends Component {
         return (
             <View style={{width:width,height:height,backgroundColor:bgcolor}}>
                 {/*导航条*/}
-                <Navbar backCallback={()=>{pop()}} centerColor={'rgba(0,0,0,0)'} textColor={'#fff'} title ={this.state.city?this.state.city:'未知城市'} />
+                <Navbar backCallback={this.onBack} centerColor={'rgba(0,0,0,0)'} textColor={'#fff'} title ={this.state.city?this.state.city:'未知城市'} />
                 <View style={{justifyContent:'center',alignItems:'center'}}>
                     <View style={{height:150*heightRatio}}/>
                     {/*今天的天气*/}

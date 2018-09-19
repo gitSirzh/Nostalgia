@@ -9,7 +9,7 @@ import {
     Image,
     ImageBackground,
     ScrollView,
-    Easing
+    Easing, Platform, BackAndroid
 } from 'react-native';
 import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
 import {push,pop} from "../../z_util/navigator";
@@ -38,7 +38,13 @@ export default class player extends Component {
         });
     }
     componentWillMount () {
-        //this.imgMoving();
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress',this.onBack);
+        }
+    }
+    onBack = () =>{
+        pop();
+        return true;
     }
     //动画-执行
     imgMoving = () => {
@@ -109,7 +115,7 @@ export default class player extends Component {
                 style={{width:width,height:height}}
             >
                 {/*导航条*/}
-                <Navbar backCallback={()=>{pop()}} centerColor={'rgba(0,0,0,0)'} textColor={'#fff'} title ={this.props.mu_title} />
+                <Navbar backCallback={this.onBack} centerColor={'rgba(0,0,0,0)'} textColor={'#fff'} title ={this.props.mu_title} />
                 <View style={{width:width,height:0.5*heightRatio,backgroundColor:'#ffffff'}}/>
                 {/*中部旋转*/}
                 <View style={{flex: 1,justifyContent:'center',alignItems:'center'}}>
