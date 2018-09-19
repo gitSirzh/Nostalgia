@@ -107,11 +107,13 @@ export default class siri extends Component {
             send('loading',{show:false});
         }, 3000);
     }
-    // componentWillUnmount() {
-    //     if (Platform.OS === 'android') {
-    //         BackAndroid.removeEventListener('hardwareBackPress', this.onBack);
-    //     }
-    // }
+    componentWillUnmount() {
+        //移除物理返回键监听
+        if (Platform.OS === 'android') {
+            BackAndroid.removeEventListener('hardwareBackPress', this.onBack);
+        }
+    }
+
 }
 
 const styles = StyleSheet.create({

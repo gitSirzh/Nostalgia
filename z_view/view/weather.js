@@ -215,6 +215,12 @@ export default class weather extends Component {
             send('showBlackAlert', {show: true, title: "请求出错喽，可能QQ号不存在呦！"});
         })
     }
+    componentWillUnmount() {
+        //移除物理返回键监听
+        if (Platform.OS === 'android') {
+            BackAndroid.removeEventListener('hardwareBackPress', this.onBack);
+        }
+    }
 }
 
 const styles = StyleSheet.create({

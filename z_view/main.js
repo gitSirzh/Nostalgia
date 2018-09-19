@@ -100,7 +100,7 @@ export default class main extends Component {
 
             }
         });
-        // //版本
+        // 版本
         // getContainerVersion(()=> {
         //     tryUpdate(() => {
         //
@@ -269,7 +269,7 @@ export default class main extends Component {
         remove('showBlackAlert');
         remove("showHotUpdate");
         remove('showQRCode');
-        removeNativeEvent("androidBackSelect");
+        //removeNativeEvent("androidBackSelect");
     }
 }
 

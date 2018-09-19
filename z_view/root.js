@@ -3,12 +3,13 @@ import {
     StyleSheet,
     View,
     Navigator,
-    Text, AsyncStorage
+    Text, AsyncStorage, Platform, BackAndroid
 } from 'react-native';
 import Index from '../z_view/index';
 import {DrawerNavigator} from 'react-navigation';
 import userComponent from "../z_view/userComponent";
 import {widthRatio} from "../z_util/device";
+import {listen, send} from "../z_util/eventDispatcher";
 
 const DrawerNav = DrawerNavigator({
     Index: { screen: Index },
@@ -30,6 +31,7 @@ const DrawerNav = DrawerNavigator({
 });
 
 export default class root extends Component {
+
     render() {
         return (
             <DrawerNav />

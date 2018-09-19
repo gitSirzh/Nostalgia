@@ -66,6 +66,12 @@ export default class iconAggregate extends Component {
     componentDidMount() {
 
     }
+    componentWillUnmount() {
+        //移除物理返回键监听
+        if (Platform.OS === 'android') {
+            BackAndroid.removeEventListener('hardwareBackPress', this.onBack);
+        }
+    }
 
 }
 

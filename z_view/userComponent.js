@@ -7,7 +7,8 @@ import {
     ImageBackground,
     Alert,
     ScrollView,
-    TouchableOpacity, AsyncStorage,
+    TouchableOpacity,
+    AsyncStorage
 } from 'react-native';
 import {checkLogin,userInfo,logout} from '../z_util/userInfoHelper';
 import {heightRatio, width, widthRatio} from '../z_util/device';

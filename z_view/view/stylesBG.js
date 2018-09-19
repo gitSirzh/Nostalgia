@@ -9,7 +9,7 @@ import {
     AsyncStorage, Platform, BackAndroid,
 } from 'react-native';
 import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
-import {push,pop} from "../../z_util/navigator";
+import {popToRouteIndex,pop} from "../../z_util/navigator";
 import Navbar from "../../z_model/navbar";
 import {backgroundGray, main} from "../../z_util/color";
 import {send,listen} from "../../z_util/eventDispatcher";
@@ -424,6 +424,12 @@ export default class stylesBG extends Component {
     }
     componentDidMount() {
 
+    }
+    componentWillUnmount() {
+        //移除物理返回键监听
+        if (Platform.OS === 'android') {
+            BackAndroid.removeEventListener('hardwareBackPress', this.onBack);
+        }
     }
 }
 
