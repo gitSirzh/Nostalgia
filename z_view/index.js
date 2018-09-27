@@ -18,6 +18,7 @@ import Weather from "./view/weather";
 import Siri from "./view/siri";
 import Calendar from "./view/calendar";
 import IconAggregate from "./view/iconAggregate";
+import BaiduMap from "./view/baiduMap";
 import {listen, send} from "../z_util/eventDispatcher";
 
 export default class index extends Component {
@@ -86,7 +87,7 @@ export default class index extends Component {
                     {/*banner 恒果推荐*/}
                     <View style={{width:width,height:200*heightRatio}}>
                         <Swiper
-                            style={styles.wrapper}
+                            //style={styles.wrapper}
                             //showsButtons={true}     //显示控制按钮
                             autoplay={true}         //开启自动轮播
                             autoplayTimeout={2}     //轮播间隔时间（切换时间）2秒
@@ -94,21 +95,21 @@ export default class index extends Component {
                             paginationStyle={{bottom: 10}}
                             dot={<View style={{           //未选中的圆点样式
                                 backgroundColor: 'rgba(0,0,0,0.2)',
-                                width: 10,
-                                height: 10,
+                                width: 6*widthRatio,
+                                height: 6*heightRatio,
                                 borderRadius: 10,
-                                marginLeft: 10,
-                                marginRight: 5,
+                                marginLeft: 5*widthRatio,
+                                marginRight: 5*widthRatio,
                                 marginTop: 5,
                                 marginBottom: 5,
                             }}/>}
                             activeDot={<View style={{    //选中的圆点样式
                                 backgroundColor: this.state.colors?this.state.colors:'#0882ff',
-                                width: 10,
-                                height: 10,
+                                width: 6*widthRatio,
+                                height: 6*heightRatio,
                                 borderRadius: 10,
-                                marginLeft: 10,
-                                marginRight: 5,
+                                marginLeft: 5*widthRatio,
+                                marginRight: 5*widthRatio,
                                 marginTop: 5,
                                 marginBottom: 5,
                             }}/>}
@@ -214,7 +215,7 @@ export default class index extends Component {
                         </TouchableOpacity>
                         {/*尽情期待 3*/}
                         <TouchableOpacity
-                            onPress={() =>{send('showBlackAlert', {show: true, title: '后续添加'});}}
+                            onPress={() =>{push('baiduMap',BaiduMap)}}
                             activeOpacity={0.6}
                             style={styles.view1}
                         >
@@ -222,11 +223,11 @@ export default class index extends Component {
                                 <View style={styles.imgSonView}>
                                     <Image style={{width:235/3.5*widthRatio,height:325/235*(235/3.5*widthRatio)}} source={require('./img/index_huimaomi.png')}/>
                                 </View>
-                                <Text style={styles.texts}>尽情期待</Text>
+                                <Text style={styles.texts}>百度地图</Text>
                             </View>
                             <View style={styles.view2}>
-                                <Text style={styles.CTR}>点击:0</Text>
-                                <Text style={styles.likes}>喜欢:0</Text>
+                                <Text style={styles.CTR}>点击:999</Text>
+                                <Text style={styles.likes}>喜欢:999</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

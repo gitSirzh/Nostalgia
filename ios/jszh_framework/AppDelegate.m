@@ -9,6 +9,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import "RCTBaiduMapViewManager.h"
 
 @implementation AppDelegate
 
@@ -24,6 +25,9 @@
                                                    launchOptions:launchOptions];
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
+  //百度地图
+  [RCTBaiduMapViewManager initSDK:@"coBm2ivcKnXy4khDklpLlmgIt7MVv4by"];//这里的api key 一定要在官网和APP的Bundle identifier对应，否则地图会显示失败
+  
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
