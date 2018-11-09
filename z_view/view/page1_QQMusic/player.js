@@ -119,7 +119,6 @@ export default class player extends Component {
          * 2.歌曲名称 为title
          **/
         let datas = this.props;
-        //TODO
 
         // let mu_title = this.props.mu_title;
         // let mu_gName = this.props.mu_gName;
