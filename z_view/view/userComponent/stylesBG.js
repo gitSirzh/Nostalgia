@@ -8,11 +8,11 @@ import {
     ScrollView,
     AsyncStorage, Platform, BackAndroid,
 } from 'react-native';
-import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
-import {popToRouteIndex,pop} from "../../z_util/navigator";
-import Navbar from "../../z_model/navbar";
-import {backgroundGray, main} from "../../z_util/color";
-import {send,listen} from "../../z_util/eventDispatcher";
+import {height, heightRatio, topHeight, width, widthRatio} from "../../../z_util/device";
+import {popToRouteIndex,pop} from "../../../z_util/navigator";
+import Navbar from "../../../z_model/navbar";
+import {backgroundGray, main} from "../../../z_util/color";
+import {send,listen} from "../../../z_util/eventDispatcher";
 
 export default class stylesBG extends Component {
     constructor(props) {
@@ -51,7 +51,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#0882ff',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#0882ff'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#0882ff'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -64,7 +64,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#000',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#000'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#000'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -77,7 +77,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#FF6A6A',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#FF6A6A'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#FF6A6A'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -90,7 +90,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#FF1493',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#FF1493'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#FF1493'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                     </View>
                     {/*第二排*/}
@@ -105,7 +105,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#9400D3',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#9400D3'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#9400D3'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -118,7 +118,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#CDB38B',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#CDB38B'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#CDB38B'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -131,7 +131,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#EE7600',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#EE7600'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#EE7600'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -144,7 +144,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#EE4000',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#EE4000'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#EE4000'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                     </View>
                     {/*第三排*/}
@@ -159,7 +159,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#43CD80',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#43CD80'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#43CD80'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -172,7 +172,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#6A5ACD',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#6A5ACD'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#6A5ACD'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -185,7 +185,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#9ACD32',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#9ACD32'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#9ACD32'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -198,7 +198,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#00CED1',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#00CED1'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#00CED1'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                     </View>
                     {/*第四排*/}
@@ -213,7 +213,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#006400',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#006400'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#006400'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -226,7 +226,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#CDCD00',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#CDCD00'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#CDCD00'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -239,7 +239,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#8B7500',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#8B7500'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#8B7500'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -252,7 +252,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#8B658B',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#8B658B'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#8B658B'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                     </View>
                     {/*第五排*/}
@@ -267,7 +267,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#FFC1C1',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#FFC1C1'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#FFC1C1'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -280,7 +280,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#FF3030',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#FF3030'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#FF3030'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -293,7 +293,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#FF00FF',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#FF00FF'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#FF00FF'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -306,7 +306,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#C71585',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#C71585'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#C71585'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                     </View>
                     {/*第六排*/}
@@ -321,7 +321,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#FFFF00',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#FFFF00'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#FFFF00'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -334,7 +334,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#B22222',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#B22222'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#B22222'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -347,7 +347,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#FA8072',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#FA8072'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#FA8072'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -360,7 +360,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#FFA500',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#FFA500'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#FFA500'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                     </View>
                     {/*第七排*/}
@@ -375,7 +375,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#8B8378',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#8B8378'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#8B8378'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -388,7 +388,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#836FFF',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#836FFF'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#836FFF'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -401,7 +401,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#3A5FCD',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#3A5FCD'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#3A5FCD'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                         <View style={{width:10*widthRatio}}/>
                         <TouchableOpacity
@@ -414,7 +414,7 @@ export default class stylesBG extends Component {
                             activeOpacity={0.6}
                             style={{backgroundColor:'#00008B',height:80*heightRatio,width:80*widthRatio,borderRadius:5}}
                         >
-                            {this.state.bgcolor==='#00008B'?<Image source={require('../img/duigou.png')} style={styles.imgDuiGou}/>:null}
+                            {this.state.bgcolor==='#00008B'?<Image source={require('../../img/duigou.png')} style={styles.imgDuiGou}/>:null}
                         </TouchableOpacity>
                     </View>
                     <View style={{marginBottom:20*heightRatio}}/>

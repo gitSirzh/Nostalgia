@@ -1,89 +1,40 @@
 import React, { Component } from 'react';
 import {
-    View,
     StyleSheet,
-    Text,
-    Image,
-    ImageBackground,
-    Alert,
-    ScrollView,
-    TouchableOpacity,
-    AsyncStorage
+    View,
+    Navigator,
+    Text, AsyncStorage, Platform, BackAndroid
 } from 'react-native';
-import {checkLogin,userInfo,logout} from '../z_util/userInfoHelper';
-import {heightRatio, width, widthRatio} from '../z_util/device';
+import Index from './view/index';
+import {DrawerNavigator} from 'react-navigation';
+import index from "./view/userComponent/index";
+import {widthRatio} from "../z_util/device";
 import {listen, send} from "../z_util/eventDispatcher";
-import {pop, push} from "../z_util/navigator";
-import {main} from "../z_util/color";
 
-import Profile from "../z_view/view/profile";
-import StylesBG from "../z_view/view/stylesBG";
+const DrawerNav = DrawerNavigator({
+    Index: { screen: Index },
+}, {
+    drawerWidth: 200*widthRatio, // 抽屉宽
+    drawerPosition: 'left', // 抽屉在左边还是右边
+    contentComponent: index,  // 自定义抽屉组件
+    // contentOptions: {
+    //     //initialRouteName: Main, // 默认页面组件
+    //     activeTintColor: 'white',  // 选中文字颜色
+    //     activeBackgroundColor: '#ff8500', // 选中背景颜色
+    //     inactiveTintColor: '#666',  // 未选中文字颜色
+    //     inactiveBackgroundColor: '#fff', // 未选中背景颜色
+    //     gesturesEnabled:false,
+    //     style: {  // 样式
+    //     }
+    // }
 
-var bgc;
+});
+
 export default class userComponent extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            colors:'',// 背景色（风格）
-        }
-    }
-    componentWillMount() {
-        AsyncStorage.getItem("bgColor",function(errs,result){
-            if (!errs) {
-                bgc = JSON.parse(result);
-            }
-        });
-        //接收监听state 重新渲染 首页
-        listen('bGcolor',(e)=>{
-            this.setState({colors:e.colors});
-        })
-        //延迟获取主题颜色（解决异步问题）
-        setTimeout(()=>{
-            this.setState({colors:global.colors});
-        },1000);
-    }
 
     render() {
         return (
-            <ScrollView>
-                <View style={{justifyContent:'center',alignItems:'center'}}>
-                    <ImageBackground source={require('./img/userHeadBG.jpg')} style={{justifyContent:'center',alignItems:'center',width:200*widthRatio,height:810/1080*200*widthRatio}}>
-                        <TouchableOpacity
-                            onPress={() =>{
-                                send('showBlackAlert', {show: true, title: "恒果正在努力找好点的服务器,后续增加登录注册功能"});
-                            }}
-                            activeOpacity={0.6}
-                            style={{justifyContent:'center',alignItems:'center'}}
-                        >
-                            <Image style={{width:50*widthRatio,height:50*widthRatio,borderRadius:25}} source={require('./img/userHead.jpg')}/>
-                            <Text style={{marginTop:8*heightRatio,fontSize:14*widthRatio,color:'#fff'}}>恒果果</Text>
-                        </TouchableOpacity>
-                    </ImageBackground>
-                    {/*阴影*/}
-                    <Image source={require('./img/yinying.jpg')} style={{width:200*widthRatio,height:38*1.5/1125*(200*widthRatio)}}/>
-                    {/*菜单项*/}
-                    <View style={{height:10*heightRatio}}/>
-                    <View style={{justifyContent:'center',alignItems:'center'}}>
-                        {/*换背景皮肤*/}
-                        <TouchableOpacity
-                            onPress={() =>{push('stylesBG',StylesBG,{bgc:global.colors})}}
-                            activeOpacity={0.6}
-                            style={{backgroundColor:this.state.colors,height:45*heightRatio,width:200*widthRatio,justifyContent:'center'}}
-                        >
-                            <Text style={{marginLeft:20*widthRatio,fontSize:13*widthRatio,color:'#fff'}}>更换皮肤</Text>
-                        </TouchableOpacity>
-                        <View style={{height:5*heightRatio}}/>
-                        {/*关于作者*/}
-                        <TouchableOpacity
-                            onPress={() =>{push('profile',Profile)}}
-                            activeOpacity={0.6}
-                            style={{backgroundColor:this.state.colors,height:45*heightRatio,width:200*widthRatio,justifyContent:'center'}}
-                        >
-                            <Text style={{marginLeft:20*widthRatio,fontSize:13*widthRatio,color:'#fff'}}>关于作者</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </ScrollView>
+            <DrawerNav />
         );
     }
 }

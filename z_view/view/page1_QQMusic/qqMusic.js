@@ -9,13 +9,16 @@ import {
     Image,
     Keyboard, Platform, BackAndroid
 } from 'react-native';
-import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
-import {push,pop} from "../../z_util/navigator";
-import Navbar from "../../z_model/navbar";
-import {send} from "../../z_util/eventDispatcher";
-import {wordGray,backgroundGray,main} from "../../z_util/color";
+import {height, heightRatio, topHeight, width, widthRatio} from "../../../z_util/device";
+import {push,pop} from "../../../z_util/navigator";
+import Navbar from "../../../z_model/navbar";
+import {send} from "../../../z_util/eventDispatcher";
+import {wordGray,backgroundGray,main} from "../../../z_util/color";
 
 import Player from "./player";
+
+//伪造数据
+import MusicList from "./musicList";
 
 export default class qqMusic extends Component {
     constructor(props) {
@@ -27,6 +30,8 @@ export default class qqMusic extends Component {
             qqId:'', //qq号
             xsong_name:'', //歌曲名字
             xsinger_name:'', //歌手名字
+            cover:'',  //背景图片
+            url:'', //歌曲文件路径
         }
     }
     componentWillMount () {
@@ -53,7 +58,7 @@ export default class qqMusic extends Component {
                 {/*导航条*/}
                 <Navbar backCallback={this.onBack} textColor={'#fff'} title ={'QQ空间收藏音乐'} />
                 {/*阴影*/}
-                <Image source={require('../img/yinying.jpg')} style={{width:width,height:38/1125*width}}/>
+                <Image source={require('../../img/yinying.jpg')} style={{width:width,height:38/1125*width}}/>
                 <View style={{justifyContent:'center',alignItems:'center'}}>
                     {/*搜索框*/}
                     <View style={{flexDirection: 'row',justifyContent:'center',alignItems:'center'}}>
@@ -89,7 +94,8 @@ export default class qqMusic extends Component {
                                     </View>
                                     <TouchableOpacity
                                         onPress={() =>{
-                                            this.setState({xsong_name:item.xsong_name,xsinger_name:item.xsinger_name});
+                                            send('startVideo',{indexTF:true,index:1,url:item.url});
+                                            this.setState({xsong_name:item.xsong_name,xsinger_name:item.xsinger_name,cover:item.cover,url:item.url});
                                         }}
                                         activeOpacity={0.6}
                                         style={{width:width-40*widthRatio}}
@@ -123,7 +129,7 @@ export default class qqMusic extends Component {
                         style={{flexDirection:'row',backgroundColor: 'rgba(224,255,255,0.9)',width:width, height: 60*heightRatio,justifyContent: 'center', alignItems: 'center'}}
                         onPress={()=>{
                             if (this.state.xsong_name){
-                                push('player',Player,{mu_title:this.state.xsong_name,mu_gName:this.state.xsinger_name});
+                                push('player',Player,{mu_title:this.state.xsong_name,mu_gName:this.state.xsinger_name,cover:this.state.cover,url: this.state.url});
                             } else {
                                 send('showBlackAlert', {show: true, title: "你还未播放歌曲呦"});
                             }
@@ -131,8 +137,13 @@ export default class qqMusic extends Component {
                         activeOpacity={1}
                     >
                         {/*歌曲图片*/}
-                        <View style={{width:50*widthRatio,height:50*heightRatio}}>
-                            <Image source={require('../../z_view/img/music_hui.png')} resizeMode ={'stretch'} style={{borderRadius:10,width:50*widthRatio,height:602/647*(50*widthRatio)}}/>
+                        <View style={{width:50*widthRatio,height:50*widthRatio}}>
+                            {this.state.cover?
+                                <Image source={{uri:this.state.cover}} style={{borderRadius:10,width:50*widthRatio,height:50*widthRatio}}/>
+                                :
+                                <Image source={require('../../img/music_hui.png')} style={{borderRadius:10,width:50*widthRatio,height:602/647*(50*widthRatio)}}/>
+                            }
+
                         </View>
                         {/*歌曲名 - 歌手名*/}
                         <View style={{marginLeft: 20*widthRatio,width:width-150*widthRatio}}>
@@ -147,7 +158,7 @@ export default class qqMusic extends Component {
                                     send('showBlackAlert', {show: true, title: "后续完成，播放功能"});
                                 }}
                             >
-                                <Image source={require('../../z_view/img/strat.png')} resizeMode ={'stretch'} style={{width:30*widthRatio,height:103/103*(30*widthRatio)}}/>
+                                <Image source={require('../../img/strat.png')} resizeMode ={'stretch'} style={{width:30*widthRatio,height:103/103*(30*widthRatio)}}/>
                             </TouchableOpacity>
 
                         </View>
@@ -157,9 +168,11 @@ export default class qqMusic extends Component {
         );
     }
     componentDidMount() {
-        //初始加载
-        this.requestQQ(null);
+        // this.requestQQ(null);
+        //回填伪造数据
+        this.setState({playlist:MusicList.list});
     }
+    //QQ搜索
     requestQQ(qqId){
         //请求QQ空间收藏的音乐
         let qqhao = qqId?qqId:'1067338206'; //不存在为默认王胖子的空间歌曲，因为他的歌曲多，嘻嘻

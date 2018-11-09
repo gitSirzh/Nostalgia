@@ -31,11 +31,13 @@ import BlackAlert from '../z_model/blackAlert';  // 提示语弹窗 toast
 import ModelAlert from '../z_model/modelAlert';  // 多个按钮弹窗
 import ImgModalAlter from '../z_model/imgModelAlter'; //图片弹窗
 import Loading from '../z_model/loading'; //加载弹窗
+import Video from '../z_model/video'; //播放器
+
 //多个按钮弹窗的数据
 import {alertData} from "../z_model/modelAlertData";
 
 //主页
-import Root from './root';
+import Root from './userComponent';
 
 //登录页
 //import Login from "./login";
@@ -66,6 +68,9 @@ export default class main extends Component {
             allChange:false,
             bg:'',
             bgs:'',
+            Video:0,
+            indexTF:false,
+            url:'',
         }
     }
 
@@ -137,9 +142,19 @@ export default class main extends Component {
                 {this.renderModelAlert()}
                 {this.renderLoading()}
                 {this.renderPopLayer()}
+                {this.renderVideo()}
             </View>
         )
     }
+    // 播放器
+    renderVideo(){
+        if(this.state.indexTF){
+            return(
+                <Video indexBtn = {this.state.indexVideo} url = {this.state.url}/>
+            )
+        }
+    }
+    //加载中。。。
     renderLoading(){
         if(this.state.showLoading){
             return(
@@ -152,7 +167,7 @@ export default class main extends Component {
     renderBlackAlert(){
         if(this['state'].showBlack){
             return(
-                <BlackAlert  title = {this['state'].blackTitle}/>
+                <BlackAlert  title = {this.state.blackTitle}/>
             )
         }
     }
@@ -161,7 +176,7 @@ export default class main extends Component {
     renderModelAlert(){
         if(global.modalVisible){
             return(
-                <ModelAlert  btntext = {this['state'].btntext} modalVisible={true} showModelAlertCallback={this.state.showModelAlertCallback}/>
+                <ModelAlert  btntext = {this.state.btntext} modalVisible={true} showModelAlertCallback={this.state.showModelAlertCallback}/>
             )
         }
     }
@@ -211,6 +226,17 @@ export default class main extends Component {
         //指定加载场景
         setNavigator(this.refs.navigator);
 
+        //监听播放器 *******控制播放用*******
+        listen('startVideo', (param) => {
+            if (this.state.indexTF){
+                this.setState({indexTF: false});
+            }
+            setTimeout(() => {
+                this.setState({indexTF:param.indexTF,indexVideo: param.index,url:param.url});
+            }, 10)
+        });
+
+        //监听提示语
         listen('showBlackAlert', (param) => {
             if (this.state.showBlack) {
                 this.setState({showBlack: false});
@@ -220,6 +246,7 @@ export default class main extends Component {
             }, 10)
         });
 
+        //监听
         listen('showModelAlert', (params) => {
             global.modalVisible = true;
             this.setState({btntext: params.btntext, showModelAlertCallback: params.callback});
@@ -228,11 +255,12 @@ export default class main extends Component {
         //按钮弹窗 data
         global.alertData = alertData;
 
+        //监听
         listen('imgModalAlter', () => {
             global.alertShow = true;
             this.setState({allChange:!this.state.allChange})
-            //弹窗出来时，传出公众号的名字
-            Clipboard.setString('全局存参数');
+            //弹窗复制参数，这里复制固定参数
+            Clipboard.setString('copy 参数');
         });
 
         //初始化背景 （风格）
@@ -241,6 +269,7 @@ export default class main extends Component {
                 global.colors = JSON.parse(r);
             }
         });
+
         listen('bGcolor',p=>{
             global.colors = p.colors;
             this.setState({bg:p.colors});
@@ -251,7 +280,7 @@ export default class main extends Component {
                     }
                 });
             }
-        })
+        });
 
     }
 
@@ -266,6 +295,7 @@ export default class main extends Component {
         //移除监听
         remove('showModelAlert');
         remove('imgModalAlter');
+        remove('startVideo');
         remove('showBlackAlert');
         remove("showHotUpdate");
         remove('showQRCode');

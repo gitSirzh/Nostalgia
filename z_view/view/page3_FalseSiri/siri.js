@@ -10,10 +10,10 @@ import {
     Platform,
     Keyboard
 } from 'react-native';
-import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
-import {push,pop,popToRouteIndex} from "../../z_util/navigator";
-import Navbar from "../../z_model/navbar";
-import {send} from "../../z_util/eventDispatcher";
+import {height, heightRatio, topHeight, width, widthRatio} from "../../../z_util/device";
+import {push,pop,popToRouteIndex} from "../../../z_util/navigator";
+import Navbar from "../../../z_model/navbar";
+import {send} from "../../../z_util/eventDispatcher";
 
 export default class siri extends Component {
     constructor(props) {

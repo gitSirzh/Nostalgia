@@ -8,18 +8,18 @@ import {
     ScrollView, Platform, BackAndroid,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-import {height, heightRatio, topHeight, width, widthRatio} from "../z_util/device";
-import {pop, push} from "../z_util/navigator";
-import Navbar from "../z_model/navbar";
-import {backgroundGray, main} from "../z_util/color";
+import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
+import {pop, push} from "../../z_util/navigator";
+import Navbar from "../../z_model/navbar";
+import {backgroundGray, main} from "../../z_util/color";
 
-import QQMusic from "./view/qqMusic";
-import Weather from "./view/weather";
-import Siri from "./view/siri";
-import Calendar from "./view/calendar";
-import IconAggregate from "./view/iconAggregate";
-import BaiduMap from "./view/baiduMap";
-import {listen, send} from "../z_util/eventDispatcher";
+import QQMusic from "./page1_QQMusic/qqMusic";
+import Weather from "./page2_Weather/weather";
+import Siri from "./page3_FalseSiri/siri";
+import Calendar from "./page4_Calendar/calendar";
+import IconAggregate from "./page5_Icons/iconAggregate";
+import BaiduMap from "./page6_BaiduMaps/baiduMap";
+import {listen, send} from "../../z_util/eventDispatcher";
 
 export default class index extends Component {
     constructor(props) {
@@ -68,7 +68,7 @@ export default class index extends Component {
                 onPress={() =>{this.props.navigation.openDrawer()}}
                 style={{width:30*widthRatio,height:30*heightRatio,alignItems:'center',justifyContent:'center'}}
             >
-                <Image source={require('./img/menu.png')} resizeMode ={'stretch'} style={{width:22*widthRatio,height:30/42*(22*widthRatio)}}/>
+                <Image source={require('../img/menu.png')} resizeMode ={'stretch'} style={{width:22*widthRatio,height:30/42*(22*widthRatio)}}/>
             </TouchableOpacity>
         );
     }
@@ -130,13 +130,13 @@ export default class index extends Component {
                     <View style={{flexDirection:'row',flexWrap:'wrap',width:width}}>
                         {/*QQ空间音乐*/}
                         <TouchableOpacity
-                            onPress={() =>{push('qqMusic',QQMusic)}}
+                            onPress={() =>{push('qqMusic',QQMusic)}} //QQMusic
                             activeOpacity={0.6}
                             style={styles.view1}
                         >
                             <View style={styles.sonView}>
                                 <View style={styles.imgSonView}>
-                                    <Image style={styles.imgs} source={require('./img/index_panda.png')}/>
+                                    <Image style={styles.imgs} source={require('../img/index_panda.png')}/>
                                 </View>
                                 <Text style={styles.texts}>QQ空间音乐</Text>
                             </View>
@@ -153,7 +153,7 @@ export default class index extends Component {
                         >
                             <View style={styles.sonView}>
                                 <View style={styles.imgSonView}>
-                                    <Image style={{width:205/3.5*widthRatio,height:298/205*(205/3.5*widthRatio)}} source={require('./img/index_Monkey.png')}/>
+                                    <Image style={{width:205/3.5*widthRatio,height:298/205*(205/3.5*widthRatio)}} source={require('../img/index_Monkey.png')}/>
                                 </View>
                                 <Text style={styles.texts}>看看天气</Text>
                             </View>
@@ -170,7 +170,7 @@ export default class index extends Component {
                         >
                             <View style={styles.sonView}>
                                 <View style={styles.imgSonView}>
-                                    <Image style={{width:204/3.5*widthRatio,height:321/204*(204/3.5*widthRatio)}} source={require('./img/index_girl.png')}/>
+                                    <Image style={{width:204/3.5*widthRatio,height:321/204*(204/3.5*widthRatio)}} source={require('../img/index_girl.png')}/>
                                 </View>
                                 <Text style={styles.texts}>冒牌Siri</Text>
                             </View>
@@ -187,7 +187,7 @@ export default class index extends Component {
                         >
                             <View style={styles.sonView}>
                                 <View style={styles.imgSonView}>
-                                    <Image style={{width:210/3.5*widthRatio,height:275/210*(210/3.5*widthRatio)}} source={require('./img/index_maomi.png')}/>
+                                    <Image style={{width:210/3.5*widthRatio,height:275/210*(210/3.5*widthRatio)}} source={require('../img/index_maomi.png')}/>
                                 </View>
                                 <Text style={styles.texts}>查查农历</Text>
                             </View>
@@ -204,7 +204,7 @@ export default class index extends Component {
                         >
                             <View style={styles.sonView}>
                                 <View style={styles.imgSonView}>
-                                    <Image style={{width:211/3.5*widthRatio,height:293/211*(211/3.5*widthRatio)}} source={require('./img/index_Tortoise.png')}/>
+                                    <Image style={{width:211/3.5*widthRatio,height:293/211*(211/3.5*widthRatio)}} source={require('../img/index_Tortoise.png')}/>
                                 </View>
                                 <Text style={styles.texts}>Icons</Text>
                             </View>
@@ -221,7 +221,7 @@ export default class index extends Component {
                         >
                             <View style={styles.sonView}>
                                 <View style={styles.imgSonView}>
-                                    <Image style={{width:235/3.5*widthRatio,height:325/235*(235/3.5*widthRatio)}} source={require('./img/index_huimaomi.png')}/>
+                                    <Image style={{width:235/3.5*widthRatio,height:325/235*(235/3.5*widthRatio)}} source={require('../img/index_huimaomi.png')}/>
                                 </View>
                                 <Text style={styles.texts}>百度地图</Text>
                             </View>

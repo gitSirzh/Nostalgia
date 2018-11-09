@@ -4,7 +4,7 @@
 
 import ReactNative from 'react-native';
 import {push} from '../z_util/navigator';
-import Login from '../z_view/index';
+import Login from '../z_view/view/index';
 import {send} from '../z_util/eventDispatcher';
 
 var {AsyncStorage,Alert} = ReactNative;

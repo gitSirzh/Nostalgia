@@ -8,12 +8,12 @@ import {
     TouchableOpacity,
     FlatList, Platform, BackAndroid
 } from 'react-native';
-import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
-import {push,pop} from "../../z_util/navigator";
-import Navbar from "../../z_model/navbar";
-import {wordGray, backgroundGray, main, white} from "../../z_util/color";
+import {height, heightRatio, topHeight, width, widthRatio} from "../../../z_util/device";
+import {push,pop} from "../../../z_util/navigator";
+import Navbar from "../../../z_model/navbar";
+import {wordGray, backgroundGray, main, white} from "../../../z_util/color";
 import Icon from "react-native-vector-icons/Ionicons";
-import {data} from "../../z_util/iconData";
+import {data} from "../../../z_util/iconData";
 
 export default class iconAggregate extends Component {
     constructor(props) {

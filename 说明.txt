@@ -28,3 +28,6 @@ send('showModelAlert', {
 //加载弹窗
 send('loading',{show:true,title:'加载中'});   //** 打开 **// 不传参数默认为 “加载中...”
 send('loading',{show:false});   //** 关闭 **//
+
+//发送播放歌曲
+send('startVideo',{indexTF:true,index:1,url:''});

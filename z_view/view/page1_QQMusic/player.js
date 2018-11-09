@@ -11,15 +11,19 @@ import {
     ScrollView,
     Easing, Platform, BackAndroid
 } from 'react-native';
-import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
-import {push,pop} from "../../z_util/navigator";
-import Navbar from "../../z_model/navbar";
+import {height, heightRatio, topHeight, width, widthRatio} from "../../../z_util/device";
+import {push,pop} from "../../../z_util/navigator";
+import Navbar from "../../../z_model/navbar";
 import Slider from 'react-native-slider';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {send} from "../../z_util/eventDispatcher";
-import {wordGray, backgroundGray, main, white} from "../../z_util/color";
-import {Normal,Tip} from "../../z_util/a_player_util/TextComponent";
-var deg; //正在执行的旋转值
+
+import {send} from "../../../z_util/eventDispatcher";
+import {wordGray, backgroundGray, main, white} from "../../../z_util/color";
+import {Normal,Tip} from "../../../z_util/a_player_util/TextComponent";
+
+import Video from 'react-native-video';
+import MusicList from './musicList';
+
 export default class player extends Component {
     constructor(props) {
         super(props);
@@ -29,6 +33,11 @@ export default class player extends Component {
             times:0, //模拟时间进度
             playing:true, //播放
             loadings:true, //
+            paused:true, // false: 表示播放，true: 表示暂停
+
+            duration:0.00, //进行时间
+
+
         }
         this.isGoing = true; //为真旋转
         this.myAnimate = Animated.timing(this.state.imgRotate, {
@@ -36,6 +45,7 @@ export default class player extends Component {
             duration: 12000, //转速
             easing: Easing.linear, //Easing.inOut(Easing.linear) 线性函数，和Easing.linear 一样并且这个效果更好点
         });
+        this.player= '';
     }
     componentWillMount () {
         if (Platform.OS === 'android') {
@@ -62,7 +72,24 @@ export default class player extends Component {
 
     //播放 / 暂停
     playing(){
-        this.setState({playing:!this.state.playing,loadings:!this.state.loadings});
+
+        // this.player.seek(0);
+        this.setState({playing:!this.state.playing,loadings:!this.state.loadings});//  ,paused: !this.state.paused    音乐播放 paused
+        //在显示歌词状态时 暂停动画 showLyic=true 是显示歌词
+        if(!this.state.showLyic){
+            this.animated();
+        }
+    };
+    //旋转图片 / 歌词
+    showLyric(){
+        this.setState({showLyic:!this.state.showLyic});
+        //切换歌词之前通过播放按钮确认是否在播放，若为播放则 暂停动画
+        if(this.state.playing){
+            this.animated();
+        }
+    };
+    //执行 / 暂停 （旋转）
+    animated(){
         this.isGoing = !this.isGoing;
         if (this.isGoing) {
             this.myAnimate.start(() => {
@@ -83,23 +110,17 @@ export default class player extends Component {
                 });
             });
         }
-    };
-    //旋转图片 / 歌词
-    showLyric(){
-        this.setState({showLyic: !this.state.showLyic});
-        if (this.state.showLyic) {  //关闭旋转
-            this.isGoing = false;
-        } else {
-            if(this.state.playing){ //检测播放按键 是否在播放，是播放按键
-                this.setState({imgRotate: new Animated.Value(0)})
-                this.isGoing = true;
-            }else { //检测播放按键 是否在播放，是暂停按键
-                this.isGoing = false;
-            }
-        }
-    };
+    }
 
     render() {
+        /**
+         * 为了播放页面的流畅，从父组件拿出几个必要的参数
+         * 1.背景图片/胶片 共用一个
+         * 2.歌曲名称 为title
+         **/
+        let datas = this.props;
+        //TODO
+
         // let mu_title = this.props.mu_title;
         // let mu_gName = this.props.mu_gName;
 
@@ -111,23 +132,35 @@ export default class player extends Component {
         return (
             <ImageBackground
                 blurRadius={8}
-                source={require('../../z_view/img/xuanzhaunIMG.jpg')}
-                style={{width:width,height:height}}
+                source={{uri:datas.cover}}
+                style={{width:width,height:height,alignItems:'center'}}
             >
                 {/*导航条*/}
-                <Navbar backCallback={this.onBack} centerColor={'rgba(0,0,0,0)'} textColor={'#fff'} title ={this.props.mu_title} />
-                <View style={{width:width,height:0.5*heightRatio,backgroundColor:'#ffffff'}}/>
-                {/*中部旋转*/}
+                <Navbar backCallback={this.onBack} centerColor={'rgba(0,0,0,0)'} textColor={'#fff'} title ={datas.mu_title} />
+                {/*分割线*/}
+                <View style={{width:width-100*widthRatio,height:0.34811*widthRatio,backgroundColor:'rgba(220,220,220,0.5)',alignItems:'center',justifyContent:'center'}}>
+                    <View style={{width:width-110*widthRatio,height:0.34812*widthRatio,backgroundColor:'rgba(220,220,220,0.5)',alignItems:'center',justifyContent:'center'}}>
+                        <View style={{width:width-140*widthRatio,height:0.34813*widthRatio,backgroundColor:'rgba(220,220,220,0.7)',alignItems:'center',justifyContent:'center'}}>
+                            <View style={{width:width-200*widthRatio,height:0.7*widthRatio,backgroundColor:'rgba(220,220,220,0.8)'}}/>
+                        </View>
+                    </View>
+                </View>
+                {/*中部 - 旋转*/}
                 <View style={{flex: 1,justifyContent:'center',alignItems:'center'}}>
                     <TouchableOpacity
-                        activeOpacity={0.6}
+                        activeOpacity={1}
                         onPress={()=>{this.showLyric()}}
                         style={styles.cdContainer}
                     >
                         {this.state.showLyic?(
+                            //歌词
                             <View style={styles.cdContainer}>
-                                <ScrollView style={{width:width}} contentContainerStyle={{alignItems: 'center', paddingTop: '30%', paddingBottom: '30%'}} ref={lyricScroll => this.lyricScroll = lyricScroll}>
-                                    <Text style={{fontSize:12*widthRatio,color:'#fff'}}>这里是歌词，正在实现此功能呦</Text>
+                                <ScrollView
+                                    style={{width:width}}
+                                    contentContainerStyle={{alignItems: 'center',}}  //alignItems: 'center',paddingTop: '30%', paddingBottom: '30%'
+                                    ref={lyricScroll => this.lyricScroll = lyricScroll}
+                                >
+                                    <Text style={{marginTop: 260*heightRatio,fontSize:10*widthRatio,color:'#fff'}}>这里是歌词，正在实现此功能呦</Text>
                                     {/*{*/}
                                         {/*lyricArr.map((v, i) => (*/}
                                             {/*<Normal color={v === currentLrc ?main?main:'#0882ff':'#fff'} key={i} style={{paddingTop: 5, paddingBottom: 5}}>{v.replace(/\[.*\]/g, '')}</Normal>*/}
@@ -135,15 +168,15 @@ export default class player extends Component {
                                     {/*}*/}
                                 </ScrollView>
                             </View>)
-                            :
+                            ://胶片
                             (<View style={styles.cdContainer}>
                                 <View style={{position:'absolute',top:0,left:34*widthRatio,width:width,alignItems:'center',zIndex:1}}>
-                                    <Image source={require('../../z_view/img/needle-ip6.png')} style={{width:100*widthRatio,height:140*widthRatio}}/>
+                                    <Image source={require('../../img/needle-ip6.png')} style={{width:100*widthRatio,height:140*widthRatio}}/>
                                 </View>
-                                <ImageBackground source={require('../../z_view/img/disc-ip6.png')} style={{width:width-40*widthRatio,height:width-40*widthRatio,justifyContent:'center',alignItems:'center'}}>
+                                <ImageBackground source={require('../../img/disc-ip6.png')} style={{width:width-40*widthRatio,height:width-40*widthRatio,justifyContent:'center',alignItems:'center'}}>
                                     <Animated.Image
                                         //source={{uri: detail.al && detail.al.picUrl + '?param=200y200'}}
-                                        source={require('../../z_view/img/xuanzhaunIMG.jpg')}
+                                        source={{uri:datas.cover}}
                                         style={[{width:width-152*widthRatio,height:width-152*widthRatio,borderRadius:(width-152*widthRatio)/2},
                                             {transform: [
                                                 {rotate: interpolatedAnimation},
@@ -172,7 +205,7 @@ export default class player extends Component {
                             value={0.1}  //this.state.times
                             //onValueChange={(value)=>{this.sliderChange(this.state.times)}}
                         />
-                        <Tip style={{marginLeft:10*widthRatio,width:35*widthRatio}} color="#ffffff">{'00:00'}</Tip>
+                        <Tip style={{marginLeft:10*widthRatio,width:35*widthRatio}} color="#fff">{'00:00'}</Tip>
                     </View>
                     {/*底部按钮*/}
                     <View style={styles.footerBtn}>
@@ -185,21 +218,43 @@ export default class player extends Component {
                         <Icon name="ios-skip-backward-outline" size={30} color={white} />
                         {/*模拟 播放和暂停*/}
                         {this.state.playing?
-                            <TouchableOpacity onPress={() => this.playing()}>
+                            <TouchableOpacity onPress={() => this.playing()} style={styles.playBtn}>
                                 <Icon name="ios-pause-outline" size={30} color={white} />
                             </TouchableOpacity>
                             :
-                            <TouchableOpacity onPress={() => this.playing()}>
+                            <TouchableOpacity onPress={() => this.playing()}  style={styles.playBtn}>
                                 <Icon name="ios-play-outline" size={30} color={white} />
                             </TouchableOpacity>
                         }
                         <Icon name="ios-skip-forward-outline" size={30} color={white} />
                         <Icon name="ios-list-outline" size={30} color={white} />
                     </View>
+                    <Video
+                        ref={video => this.player = video}
+                        source={{uri: MusicList.list[2].url}}
+                        volume={1.0}
+                        paused={this.state.paused}
+                        playInBackground={true}
+                        onLoadStart={this.loadStart}
+                        onLoad={data => this.setDuration(data)}
+                        // onProgress={(data) => this.setTime(data)}
+                        onEnd={(data) => this.playing()}
+                        onError={(data) => this.videoError(data)}
+                        onBuffer={this.onBuffer}
+                        // onTimedMetadata={this.onTimedMetadata}
+                    />
                 </View>
             </ImageBackground>
         );
     }
+    setDuration(duration) {
+        this.setState({duration: duration.duration})
+    }
+    videoError(error) {
+        alert(JSON.stringify(error))
+        send('showBlackAlert', {show:true,title:`播放失败: ${JSON.stringify(error)}`});
+    }
+
     //进度条
     sliderChange(value){
         // const { currentPlay, dispatch } = this.props;
@@ -227,13 +282,11 @@ export default class player extends Component {
 
 const styles = StyleSheet.create({
     cdContainer: {
-        //borderWidth:1,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
     sliderBtn: {
-        //borderWidth:1,
         height: 40*heightRatio,
         paddingLeft: 10*widthRatio,
         paddingRight: 10*widthRatio,
@@ -257,5 +310,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-around',
+    },
+    playBtn:{
+        height:40*widthRatio,
+        width:40*widthRatio,
+        alignItems:'center',
+        justifyContent:'center'
     }
 });

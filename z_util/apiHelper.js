@@ -9,7 +9,7 @@ const {wdBaseUrl2,llBaseUrl,BaseUrl} = apiConfig;
 //登录  --  密码
 export function login(callback,data) {
     zhGet({
-        url:`${BaseUrl}/UserInfoManger/GetUserInfoByName` //uname=root
+        url:`${BaseUrl}/UserInfoManger/GetUserInfoByName` //uname=userComponent
         ,data,
         callback
     })

@@ -10,11 +10,11 @@ import {
     Keyboard,
     ScrollView, Platform, BackAndroid
 } from 'react-native';
-import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
-import {push,pop} from "../../z_util/navigator";
-import Navbar from "../../z_model/navbar";
-import {send} from "../../z_util/eventDispatcher";
-import {wordGray,backgroundGray,main} from "../../z_util/color";
+import {height, heightRatio, topHeight, width, widthRatio} from "../../../z_util/device";
+import {push,pop} from "../../../z_util/navigator";
+import Navbar from "../../../z_model/navbar";
+import {send} from "../../../z_util/eventDispatcher";
+import {wordGray,backgroundGray,main} from "../../../z_util/color";
 
 export default class weather extends Component {
     constructor(props) {

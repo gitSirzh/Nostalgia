@@ -2,7 +2,7 @@
  * Copyright (c) 2015-present, Facebook, Inc.
  *
  * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * LICENSE file in the userComponent directory of this source tree.
  */
 
 #import "AppDelegate.h"
@@ -27,7 +27,7 @@
 
   //百度地图
   [RCTBaiduMapViewManager initSDK:@"coBm2ivcKnXy4khDklpLlmgIt7MVv4by"];//这里的api key 一定要在官网和APP的Bundle identifier对应，否则地图会显示失败
-  
+
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;

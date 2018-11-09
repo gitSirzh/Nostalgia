@@ -10,7 +10,7 @@ import {sha1} from '../z_util/scrypto';
 import {send} from '../z_util/eventDispatcher'
 import {userInfo,logout} from './userInfoHelper'
 import {push} from '../z_util/navigator'
-import Login from '../z_view/index'
+import Login from '../z_view/view/index'
 
 // const appId = 'jszh_framework';
 // const appSecret = '';

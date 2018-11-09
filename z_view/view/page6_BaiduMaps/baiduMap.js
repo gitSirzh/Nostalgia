@@ -17,9 +17,9 @@ import {
     MapTypes,
     Geolocation
 } from 'react-native-baidu-map';
-import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
-import {push,pop} from "../../z_util/navigator";
-import Navbar from "../../z_model/navbar";
+import {height, heightRatio, topHeight, width, widthRatio} from "../../../z_util/device";
+import {push,pop} from "../../../z_util/navigator";
+import Navbar from "../../../z_model/navbar";
 
 export default class baiduMap extends Component {
     constructor(props) {
@@ -43,7 +43,7 @@ export default class baiduMap extends Component {
 
     render() {
         return (
-            <View style={{width:width,height:height,backgroundColor:'#F5FCFF'}}>
+            <View style={{width:width,height:height,backgroundColor:'#fff'}}>
                 {/*导航条*/}
                 <Navbar backCallback={this.onBack} textColor={'#fff'} title ={'百度地图'} />
                 <View style={{flex:1,backgroundColor:'rgba(0,0,0,0)'}}>

@@ -10,11 +10,11 @@ import {
     ScrollView,
     ImageBackground, Platform, BackAndroid
 } from 'react-native';
-import {height, heightRatio, topHeight, width, widthRatio} from "../../z_util/device";
-import {push,pop} from "../../z_util/navigator";
-import Navbar from "../../z_model/navbar";
-import {send} from "../../z_util/eventDispatcher";
-import {white} from "../../z_util/color";
+import {height, heightRatio, topHeight, width, widthRatio} from "../../../z_util/device";
+import {push,pop} from "../../../z_util/navigator";
+import Navbar from "../../../z_model/navbar";
+import {send} from "../../../z_util/eventDispatcher";
+import {white} from "../../../z_util/color";
 import Icon from "react-native-vector-icons/Ionicons";
 import {DatePicker} from 'react-native-pickers';
 
@@ -72,7 +72,7 @@ export default class calendar extends Component {
         return (
             <ImageBackground
                 //blurRadius={8} //模糊度
-                source={require('../../z_view/img/nongliBGImg.jpg')}
+                source={require('../../img/nongliBGImg.jpg')}
                 style={{width:width,height:height}}
             >
                 {/*导航条*/}
@@ -95,9 +95,9 @@ export default class calendar extends Component {
                     {/*农历*/}
                     <Text style={{marginTop:15*heightRatio,fontSize:35*widthRatio,fontWeight:'800',color:'#000'}}>{this.state.data.cnmonth}月{this.state.data.cnday}</Text>
                     <View style={{marginTop:20*heightRatio,width:width,flexDirection: 'row',justifyContent:'center',alignItems:'center'}}>
-                        <Animated.Image style={[styles.circle,{transform:[{rotate:spin}]}]} source={require('../../z_view/img/xiaohonghua.png')}/>
+                        <Animated.Image style={[styles.circle,{transform:[{rotate:spin}]}]} source={require('../../img/xiaohonghua.png')}/>
                         <Text style={{fontSize:20*widthRatio,color:'#9B8137',fontWeight:'300'}}> {this.state.data.cnyear}</Text>
-                        <Animated.Image style={[styles.circle,{transform:[{rotate:spin}]}]} source={require('../../z_view/img/xiaohonghua.png')}/>
+                        <Animated.Image style={[styles.circle,{transform:[{rotate:spin}]}]} source={require('../../img/xiaohonghua.png')}/>
                     </View>
                     {/*中部*/}
                     <View style={{width:width,marginTop:40*heightRatio}}>

@@ -40,8 +40,8 @@ import com.android.build.OutputFile
  *   //         'devDisabledIn${productFlavor}${buildType}'
  *   //         'devDisabledIn${buildType}'
  *
- *   // the root of your project, i.e. where "package.json" lives
- *   root: "../../",
+ *   // the userComponent of your project, i.e. where "package.json" lives
+ *   userComponent: "../../",
  *
  *   // where to put the JS bundle asset in debug mode
  *   jsBundleDirDebug: "$buildDir/intermediates/assets/debug",
@@ -122,6 +122,9 @@ android {
             keyPassword MYAPP_RELEASE_KEY_PASSWORD
         }
     }
+    lintOptions {
+        abortOnError false
+    }
     splits {
         abi {
             reset()
@@ -153,6 +156,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-video')
     compile project(':react-native-baidu-map')
     compile project(':react-native-svg')
     compile project(':react-native-vector-icons')
