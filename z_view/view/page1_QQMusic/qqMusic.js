@@ -94,7 +94,7 @@ export default class qqMusic extends Component {
                                     </View>
                                     <TouchableOpacity
                                         onPress={() =>{
-                                            send('startVideo',{indexTF:true,index:1,url:item.url});
+                                            send('startVideo',{indexTF:true,index:1,url:item.url,paused:true});
                                             this.setState({xsong_name:item.xsong_name,xsinger_name:item.xsinger_name,cover:item.cover,url:item.url});
                                         }}
                                         activeOpacity={0.6}
@@ -116,7 +116,7 @@ export default class qqMusic extends Component {
                         ListFooterComponent={()=>{
                             return(
                                 <View style={{backgroundColor:'#c5c5c5',marginBottom: 170*heightRatio,marginTop:5*heightRatio,width:width,height:30*heightRatio,justifyContent:'center',alignItems:'center'}}>
-                                    <Text style={{color:wordGray,fontSize:13*widthRatio,fontWeight:'300'}}>没有更多歌曲了</Text>
+                                    <Text style={{color:wordGray,fontSize:13*widthRatio,fontWeight:'300'}}>{footTitle}</Text>
                                 </View>
                             )
                         }}

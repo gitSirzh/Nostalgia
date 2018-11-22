@@ -68,9 +68,12 @@ export default class main extends Component {
             allChange:false,
             bg:'',
             bgs:'',
+
+            //播放器
             Video:0,
             indexTF:false,
             url:'',
+            paused:false,
         }
     }
 
@@ -150,7 +153,7 @@ export default class main extends Component {
     renderVideo(){
         if(this.state.indexTF){
             return(
-                <Video indexBtn = {this.state.indexVideo} url = {this.state.url}/>
+                <Video indexBtn = {this.state.indexVideo} url = {this.state.url} paused={this.state.paused}/>
             )
         }
     }
@@ -232,7 +235,7 @@ export default class main extends Component {
                 this.setState({indexTF: false});
             }
             setTimeout(() => {
-                this.setState({indexTF:param.indexTF,indexVideo: param.index,url:param.url});
+                this.setState({indexTF:param.indexTF,indexVideo: param.index,url:param.url,paused:param.paused});
             }, 10)
         });
 

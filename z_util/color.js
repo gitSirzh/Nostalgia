@@ -30,3 +30,22 @@ export var backgroundGray = '#f5f5f7';
 export var red = '#FF4F4F';
 export var black = '#000000';
 export var white = '#ffffff';
+
+export const wholeColor = {
+    red: '#FF0000',
+    orange: '#FFA500',
+    yellow: '#FFFF00',
+    green: '#00FF00',
+    cyan: '#00FFFF',
+    blue: '#0000FF',
+    purple: '#800080',
+    black: '#000',
+    white: '#FFF',
+    gray: '#808080',
+    drakGray: '#A9A9A9',
+    lightGray: '#D3D3D3',
+    tomato: '#FF6347',
+    PeachPuff: '#FFDAB9',
+    clear: 'transparent',  //透明色
+};
+

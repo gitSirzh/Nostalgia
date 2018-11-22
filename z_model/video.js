@@ -20,14 +20,15 @@ export default class video extends Component {
         this.player = '';
         this.musicList = [];
         this.state = {
-            paused: true, // false: 表示播放，true: 表示暂停
+            paused: false, // false: 表示暂停，true: 表示播放
             duration: 0.00,
             slideValue: 0.00,
             currentTime: 0.00,
             currentIndex: 0,
             playMode: 0,
             musicInfo: {},
-            url:''
+            url:'',
+            isPlay:1
         }
     }
 
@@ -122,7 +123,7 @@ export default class video extends Component {
                     ref={video => this.player = video}
                     source={{uri: this.props.url}}
                     volume={1.0}
-                    paused={this.state.paused}
+                    paused={!this.state.paused}
                     playInBackground={true}
                     onLoadStart={this.loadStart}
                     onLoad={data => this.setDuration(data)}

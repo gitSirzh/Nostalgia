@@ -79,6 +79,13 @@ export default class player extends Component {
         if(!this.state.showLyic){
             this.animated();
         }
+        setTimeout(()=>{
+            if (this.state.playing){
+                send('startVideo',{indexTF:true,index:1,url:this.props.url,paused:true});
+            }else {
+                send('startVideo',{indexTF:true,index:1,url:this.props.url,paused:false});
+            }
+        },200);
     };
     //旋转图片 / 歌词
     showLyric(){
@@ -88,7 +95,7 @@ export default class player extends Component {
             this.animated();
         }
     };
-    //执行 / 暂停 （旋转）
+    //旋转 / 暂停旋转
     animated(){
         this.isGoing = !this.isGoing;
         if (this.isGoing) {
@@ -128,6 +135,9 @@ export default class player extends Component {
             inputRange: [0, 1],
             outputRange: ['0deg', '360deg']
         });
+
+        //开始暂停
+        var st = this.state.playing?'ios-pause-outline':'ios-play-outline';
         return (
             <ImageBackground
                 blurRadius={8}
@@ -159,7 +169,7 @@ export default class player extends Component {
                                     contentContainerStyle={{alignItems: 'center',}}  //alignItems: 'center',paddingTop: '30%', paddingBottom: '30%'
                                     ref={lyricScroll => this.lyricScroll = lyricScroll}
                                 >
-                                    <Text style={{marginTop: 260*heightRatio,fontSize:10*widthRatio,color:'#fff'}}>这里是歌词，正在实现此功能呦</Text>
+                                    <Text style={{marginTop: 260*heightRatio,fontSize:12*widthRatio,color:'#fff'}}>这里是歌词，正在实现此功能呦</Text>
                                     {/*{*/}
                                         {/*lyricArr.map((v, i) => (*/}
                                             {/*<Normal color={v === currentLrc ?main?main:'#0882ff':'#fff'} key={i} style={{paddingTop: 5, paddingBottom: 5}}>{v.replace(/\[.*\]/g, '')}</Normal>*/}
@@ -216,15 +226,9 @@ export default class player extends Component {
                         <Icon name="ios-repeat-outline" size={30} color={white} />
                         <Icon name="ios-skip-backward-outline" size={30} color={white} />
                         {/*模拟 播放和暂停*/}
-                        {this.state.playing?
-                            <TouchableOpacity onPress={() => this.playing()} style={styles.playBtn}>
-                                <Icon name="ios-pause-outline" size={30} color={white} />
-                            </TouchableOpacity>
-                            :
-                            <TouchableOpacity onPress={() => this.playing()}  style={styles.playBtn}>
-                                <Icon name="ios-play-outline" size={30} color={white} />
-                            </TouchableOpacity>
-                        }
+                        <TouchableOpacity onPress={() => this.playing()} style={styles.playBtn}>
+                            <Icon name={st} size={30} color={white} />
+                        </TouchableOpacity>
                         <Icon name="ios-skip-forward-outline" size={30} color={white} />
                         <Icon name="ios-list-outline" size={30} color={white} />
                     </View>
