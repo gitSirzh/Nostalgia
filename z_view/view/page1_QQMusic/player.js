@@ -33,12 +33,10 @@ export default class player extends Component {
             times:0, //模拟时间进度
             playing:true, //播放
             loadings:true, //
-            paused:true, // false: 表示播放，true: 表示暂停
+            paused:true, // false: 播放，true: 暂停
 
             duration:0.00, //进行时间
-
-
-        }
+        };
         this.isGoing = true; //为真旋转
         this.myAnimate = Animated.timing(this.state.imgRotate, {
             toValue: 1,
@@ -72,7 +70,6 @@ export default class player extends Component {
 
     //播放 / 暂停
     playing(){
-
         // this.player.seek(0);
         this.setState({playing:!this.state.playing,loadings:!this.state.loadings});//  ,paused: !this.state.paused    音乐播放 paused
         //在显示歌词状态时 暂停动画 showLyic=true 是显示歌词
@@ -124,6 +121,7 @@ export default class player extends Component {
          * 为了播放页面的流畅，从父组件拿出几个必要的参数
          * 1.背景图片/胶片 共用一个
          * 2.歌曲名称 为title
+         * 3.歌手名字
          **/
         let datas = this.props;
 
@@ -216,7 +214,7 @@ export default class player extends Component {
                         />
                         <Tip style={{marginLeft:10*widthRatio,width:35*widthRatio}} color="#fff">{'00:00'}</Tip>
                     </View>
-                    {/*底部按钮*/}
+                    {/*底部按钮 //TODO */}
                     <View style={styles.footerBtn}>
                         {/*<TouchableOpacity*/}
                             {/*onPress={() =>{send('showBlackAlert', {show: true, title: "后续实现"});}}*/}
@@ -254,7 +252,7 @@ export default class player extends Component {
         this.setState({duration: duration.duration})
     }
     videoError(error) {
-        alert(JSON.stringify(error))
+        // alert(JSON.stringify(error));
         send('showBlackAlert', {show:true,title:`播放失败: ${JSON.stringify(error)}`});
     }
 
