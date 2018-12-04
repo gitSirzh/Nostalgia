@@ -963,6 +963,10 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = N97S933ZWQ;
+						ProvisioningStyle = Manual;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -1602,8 +1606,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = N97S933ZWQ;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-baidu-map/ios/lib";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1617,7 +1624,10 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ydb.ipa;
 				PRODUCT_NAME = jszh_framework;
+				PROVISIONING_PROFILE = "d30a1a01-92b7-4d11-84b6-36133cc42e99";
+				PROVISIONING_PROFILE_SPECIFIER = ydbipa_distri;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1626,7 +1636,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = N97S933ZWQ;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-baidu-map/ios/lib";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1640,7 +1653,10 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ydb.ipa;
 				PRODUCT_NAME = jszh_framework;
+				PROVISIONING_PROFILE = "d30a1a01-92b7-4d11-84b6-36133cc42e99";
+				PROVISIONING_PROFILE_SPECIFIER = ydbipa_distri;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

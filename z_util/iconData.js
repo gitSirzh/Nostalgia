@@ -1,4 +1,4 @@
-export var data = [
+export const data = [
     "ios-add",
     "ios-add-circle",
     "ios-add-circle-outline",

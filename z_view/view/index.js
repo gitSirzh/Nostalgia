@@ -88,12 +88,12 @@ export default class index extends Component {
                     <View style={{width:width,height:200*heightRatio}}>
                         <Swiper
                             //style={styles.wrapper}
-                            //showsButtons={true}     //显示控制按钮
-                            autoplay={true}         //开启自动轮播
-                            autoplayTimeout={2}     //轮播间隔时间（切换时间）2秒
-                            showsPagination={true}       //为false不显示下方圆点
+                            //showsButtons={true}               //显示控制按钮
+                            autoplay={true}                     //开启自动轮播
+                            autoplayTimeout={2}                 //轮播间隔时间（切换时间）2秒
+                            showsPagination={true}              //为false不显示下方圆点
                             paginationStyle={{bottom: 10}}
-                            dot={<View style={{           //未选中的圆点样式
+                            dot={<View style={{                 //未选中的圆点样式
                                 backgroundColor: 'rgba(0,0,0,0.2)',
                                 width: 6*widthRatio,
                                 height: 6*heightRatio,
@@ -103,7 +103,7 @@ export default class index extends Component {
                                 marginTop: 5,
                                 marginBottom: 5,
                             }}/>}
-                            activeDot={<View style={{    //选中的圆点样式
+                            activeDot={<View style={{           //选中的圆点样式
                                 backgroundColor: this.state.colors?this.state.colors:'#0882ff',
                                 width: 6*widthRatio,
                                 height: 6*heightRatio,
@@ -115,13 +115,13 @@ export default class index extends Component {
                             }}/>}
                         >
                             <View style={styles.slide1}>
-                                <Text style={styles.text}>恒哥说过:</Text>
+                                <Image style={{width:208/2*widthRatio,height:202/208*208/2*widthRatio}} source={require('../img/react_native_swiper.png')}/>
                             </View>
                             <View style={styles.slide2}>
-                                <Text style={styles.text}>要好好学习</Text>
+                                <Image style={{width:208/2*widthRatio,height:202/208*208/2*widthRatio}} source={require('../img/react_native_swiper.png')}/>
                             </View>
                             <View style={styles.slide3}>
-                                <Text style={styles.text}>天天向上哟！</Text>
+                                <Image style={{width:208/2*widthRatio,height:202/208*208/2*widthRatio}} source={require('../img/react_native_swiper.png')}/>
                             </View>
                         </Swiper>
                     </View>
