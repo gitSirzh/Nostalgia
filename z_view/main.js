@@ -119,10 +119,9 @@ export default class main extends Component {
     //获取当前状态
     getCurrentState(appState) {
         if(appState=="inactive"){
-            send("chongqiWebsocket")
-            send("chongzhiIndex")
+
         }else if(appState == "background"){
-            send("guanbiWebsocket")
+
         }
     }
 

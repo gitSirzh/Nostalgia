@@ -33,7 +33,6 @@ export default class stylesBG extends Component {
         return true;
     };
     render() {
-
         return (
             <View style={{width:width,height:height,backgroundColor:backgroundGray}}>
                 {/*导航条*/}
@@ -59,8 +58,6 @@ export default class stylesBG extends Component {
                             })}
                         </View>
                     </View>
-
-
                     <View style={{marginBottom:20*heightRatio}}/>
                 </ScrollView>
             </View>

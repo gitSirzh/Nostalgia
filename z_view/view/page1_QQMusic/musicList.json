@@ -1,5 +1,13 @@
+
 {
   "list": [
+    {
+      "title": "Sold Out",
+      "xsong_name": "Sold Out",
+      "xsinger_name": "Hawk Nelson",
+      "cover": "http://img.yidianling.com/file/2016/07/inu911sfu2qf1jwe.jpg!s330x330",
+      "url": "http://music.163.com/song/media/outer/url?id=31010566.mp3"
+    },
     {
       "title": "天涯",
       "xsong_name": "天涯",
@@ -181,7 +189,7 @@
       "xsinger_name": "汪峰",
       "cover": "http://img.yidianling.com/file/2016/07/kqy3nolw2e7xoupi.jpg!s330x330",
       "url": "http://dl.stream.qqmusic.qq.com/M800003lIFrz1QafYL.mp3?vkey=9D1A2D2BB5D60DDEB10DCB81720E49D1F4DDFF9DC527B99931A1760FB197320D9B68CC61DB99AD5C36CB22A50227D64ACFB23C47649C00C8&guid=5150825362&fromtag=1"
-    },
+    }
   ]
 }
 
