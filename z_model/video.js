@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react'
 import {View} from 'react-native';
-import Video from 'react-native-video';
+import Video,{ TextTrackType } from 'react-native-video';
 import {send,listen} from "../z_util/eventDispatcher";
 
 const mockData = require('../z_view/view/page1_QQMusic/musicList.json');
@@ -124,7 +124,27 @@ export default class video extends Component {
                     source={{uri: this.props.url}}
                     volume={1.0}
                     paused={!this.state.paused}
+
+                    ignoreSilentSwitch={'ignore'} //控制iOS静默开关行为: inherit - （默认） - 使用默认的AVPlayer行为;  ignore - 即使设置了静音开关也播放音频;obey - 如果设置了静音开关，则不播放音频
                     playInBackground={true}
+
+                    //调用外部播放器
+                    // audioOnly={true}
+                    // poster={'http://p2.music.126.net/72SEr2EBvouOayl5jHZagQ==/109951163505822408.jpg?param=180y180'}
+                    // posterResizeMode={'contain'}
+                    // selectedTextTrack={{
+                    //     type: "title",
+                    //     value: "English Subtitles"
+                    // }}
+                    // textTracks={[
+                    //     {
+                    //         title: "English CC",
+                    //         language: "en",
+                    //         type: "text/vtt",
+                    //         uri: "https://bitdash-a.akamaihd.net/content/sintel/subtitles/subtitles_en.vtt"
+                    //     }
+                    // ]}
+
                     onLoadStart={this.loadStart}
                     onLoad={data => this.setDuration(data)}
                     onProgress={(data) => this.setTime(data)}

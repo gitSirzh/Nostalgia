@@ -964,8 +964,13 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = N97S933ZWQ;
+						DevelopmentTeam = JZ4B4YJLL7;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1606,11 +1611,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = N97S933ZWQ;
+				DEVELOPMENT_TEAM = JZ4B4YJLL7;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-baidu-map/ios/lib";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1624,10 +1630,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ydb.ipa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hengguoApp.ZhCareer;
 				PRODUCT_NAME = jszh_framework;
-				PROVISIONING_PROFILE = "d30a1a01-92b7-4d11-84b6-36133cc42e99";
-				PROVISIONING_PROFILE_SPECIFIER = ydbipa_distri;
+				PROVISIONING_PROFILE = "208eb43a-4fb0-4e59-b659-410f75b5a118";
+				PROVISIONING_PROFILE_SPECIFIER = hengguoDevelopment;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1636,10 +1642,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N97S933ZWQ;
+				DEVELOPMENT_TEAM = JZ4B4YJLL7;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../node_modules/react-native-baidu-map/ios/lib";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1653,10 +1660,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ydb.ipa;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hengguoApp.ZhCareer;
 				PRODUCT_NAME = jszh_framework;
-				PROVISIONING_PROFILE = "d30a1a01-92b7-4d11-84b6-36133cc42e99";
-				PROVISIONING_PROFILE_SPECIFIER = ydbipa_distri;
+				PROVISIONING_PROFILE = "208eb43a-4fb0-4e59-b659-410f75b5a118";
+				PROVISIONING_PROFILE_SPECIFIER = hengguoDevelopment;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
