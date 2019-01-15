@@ -66,6 +66,7 @@
 		AC37CC4F215C811C00974440 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AC37CC4E215C811C00974440 /* libstdc++.6.0.9.tbd */; };
 		AC37CC53215C849A00974440 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AC37CC52215C849A00974440 /* mapapi.bundle */; };
 		AC7BBD3F2153A7B0000D43C7 /* libRCTBaiduMap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7BBD3E2153A799000D43C7 /* libRCTBaiduMap.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		ACD5698221D9F15A00633DE2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD5698121D9F15A00633DE2 /* MapKit.framework */; };
 		ACE0A9A921466EF4003995C1 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = ACE0A98021466EF4003995C1 /* Fonts */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		AEC7E6BACCE64E09B0390292 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48250875870043BC9B55BEA2 /* libRNSVG.a */; };
@@ -473,6 +474,8 @@
 		AC37CC52215C849A00974440 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = "../node_modules/react-native-baidu-map/ios/lib/BaiduMapAPI_Map.framework/Resources/mapapi.bundle"; sourceTree = "<group>"; };
 		AC39BC7E21440651007EED99 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		AC7BBD392153A798000D43C7 /* RCTBaiduMap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBaiduMap.xcodeproj; path = "../node_modules/react-native-baidu-map/ios/RCTBaiduMap.xcodeproj"; sourceTree = "<group>"; };
+		ACD5698121D9F15A00633DE2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		ACD5698521D9F16F00633DE2 /* jszh_framework.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = jszh_framework.entitlements; path = jszh_framework/jszh_framework.entitlements; sourceTree = "<group>"; };
 		ACE0A98021466EF4003995C1 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		BCC5EB6F57D44563A084D9BA /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -520,6 +523,7 @@
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
+				ACD5698221D9F15A00633DE2 /* MapKit.framework in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
@@ -645,6 +649,7 @@
 		13B07FAE1A68108700A75B9A /* jszh_framework */ = {
 			isa = PBXGroup;
 			children = (
+				ACD5698521D9F16F00633DE2 /* jszh_framework.entitlements */,
 				AC37CC52215C849A00974440 /* mapapi.bundle */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -683,6 +688,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACD5698121D9F15A00633DE2 /* MapKit.framework */,
 				AC37CC4E215C811C00974440 /* libstdc++.6.0.9.tbd */,
 				AC37CC4C215C810300974440 /* CoreTelephony.framework */,
 				AC37CC4A215C80F700974440 /* libsqlite3.0.tbd */,
@@ -969,6 +975,12 @@
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.WAC = {
+								enabled = 0;
 							};
 						};
 					};
@@ -1632,7 +1644,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hengguoApp.ZhCareer;
 				PRODUCT_NAME = jszh_framework;
-				PROVISIONING_PROFILE = "208eb43a-4fb0-4e59-b659-410f75b5a118";
+				PROVISIONING_PROFILE = "b982ce22-07e5-45ea-9289-089dfd30e6c7";
 				PROVISIONING_PROFILE_SPECIFIER = hengguoDevelopment;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1662,7 +1674,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hengguoApp.ZhCareer;
 				PRODUCT_NAME = jszh_framework;
-				PROVISIONING_PROFILE = "208eb43a-4fb0-4e59-b659-410f75b5a118";
+				PROVISIONING_PROFILE = "b982ce22-07e5-45ea-9289-089dfd30e6c7";
 				PROVISIONING_PROFILE_SPECIFIER = hengguoDevelopment;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

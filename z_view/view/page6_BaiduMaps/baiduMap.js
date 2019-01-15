@@ -27,8 +27,17 @@ export default class baiduMap extends Component {
         this.state = {
             mayType: MapTypes.NORMAL,
             zoom: 15,
+            center: {
+                longitude: 113.981718,
+                latitude: 22.542449
+            },
             trafficEnabled: false,
             baiduHeatMapEnabled: false,
+            markers: [{
+                longitude: 113.981718,
+                latitude: 22.542449,
+                title: "我的位置"
+            }]
         }
     }
     componentWillMount () {
@@ -65,24 +74,26 @@ export default class baiduMap extends Component {
         );
     }
     componentDidMount() {
-        Geolocation.getCurrentPosition().then(
-            (data) => {
-                this.setState({
-                    zoom:18,
-                    markers:[{
-                        latitude:data.latitude,
-                        longitude:data.longitude,
-                        title:'我的位置'
-                    }],
-                    center:{
-                        latitude:data.latitude,
-                        longitude:data.longitude,
-                    }
-                })
-            }
-        ).catch(error => {
-            console.warn(error,'error');
-        })
+        // Geolocation.getCurrentPosition()
+        //     .then(data => {
+        //         console.warn(JSON.stringify(data));
+        //         this.setState({
+        //             zoom: 15,
+        //             marker: {
+        //                 latitude: data.latitude,
+        //                 longitude: data.longitude,
+        //                 title: 'Your location'
+        //             },
+        //             center: {
+        //                 latitude: data.latitude,
+        //                 longitude: data.longitude,
+        //                 rand: Math.random()
+        //             }
+        //         });
+        //     })
+        //     .catch(e =>{
+        //         console.warn(e, 'error');
+        //     });
     }
 
     componentWillUnmount() {
@@ -105,7 +116,7 @@ const styles = StyleSheet.create({
         height:40*heightRatio,
         borderRadius: 20,
         borderColor:'blue',
-        borderWidth:1*widthRatio,
+        borderWidth:1,
         justifyContent:'center',
         alignItems:'center',
         marginRight: 20*widthRatio

@@ -76,13 +76,14 @@ export default class player extends Component {
         if(!this.state.showLyic){
             this.animated();
         }
-        setTimeout(()=>{
-            if (this.state.playing){
-                send('startVideo',{indexTF:true,index:1,url:this.props.url,paused:true});
-            }else {
-                send('startVideo',{indexTF:true,index:1,url:this.props.url,paused:false});
-            }
-        },200);
+        //暂停发送监听（暂时）
+        // setTimeout(()=>{
+        //     if (this.state.playing){
+        //         send('startVideo',{indexTF:true,index:1,url:this.props.url,paused:true});
+        //     }else {
+        //         send('startVideo',{indexTF:true,index:1,url:this.props.url,paused:false});
+        //     }
+        // },200);
     };
     //旋转图片 / 歌词
     showLyric(){
