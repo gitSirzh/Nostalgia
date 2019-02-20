@@ -3,11 +3,11 @@
 
 ### 介绍
 
-<figure class="third">
-    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png" width="300">
-    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/colorStyle.png" width="300">
-    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/ai.png" width="300">
-</figure>
+<p>
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png" width="30%" height="30%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/colorStyle.png" width="30%" height="30%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/colorStyle.png" width="30%" height="30%">
+<p>
 
 
 > 有不合理的地方请提 `issues`
