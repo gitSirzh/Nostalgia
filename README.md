@@ -1,7 +1,7 @@
 
 ## 个人随性开发的一个app
 ### 介绍
-![](https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png)
+###### ![](https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png)
 
 ##### 有不合理的地方请提 `issues`
 
