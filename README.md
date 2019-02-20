@@ -4,7 +4,7 @@
 ### 介绍
 
 <figure class="third">
-    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png" width="100">
     <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/colorStyle.png">
     <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/ai.png">
 </figure>
