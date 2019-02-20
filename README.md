@@ -10,9 +10,19 @@
 <p>
 
 <p>
-    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/music.png" width="30%" height="30%">
-    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/lyric.png" width="30%" height="30%">
-    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/icons.png" width="30%" height="30%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/music.png" width="32%" height="32%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/lyric.png" width="32%" height="32%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/icons.png" width="32%" height="32%">
+<p>
+
+<p>
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/calendar.png" width="32%" height="32%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/pickers.png" width="32%" height="32%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/baiduMap.png" width="32%" height="32%">
+<p>
+
+<p>
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/weather.png" width="32%" height="32%">
 <p>
 
 
