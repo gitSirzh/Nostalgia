@@ -4,7 +4,7 @@
 ### 介绍
 
 <figure class="third">
-    <a href="http://jjx/images/xxx.jpg"><img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png" width="270"></a>
+    <a href="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png"><img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png" width="270"></a>
     <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/colorStyle.png" width="270">
     <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/ai.png" width="270">
 </figure>
