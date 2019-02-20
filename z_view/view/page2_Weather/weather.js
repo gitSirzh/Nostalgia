@@ -48,7 +48,7 @@ export default class weather extends Component {
     onBack = () =>{
         pop();
         return true;
-    }
+    };
     setModalVisible(visible) {
         this.setState({modalVisible: visible});
     }
