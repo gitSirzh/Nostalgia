@@ -4,9 +4,15 @@
 ### 介绍
 
 <p>
-    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png" width="30%" height="30%">
-    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/colorStyle.png" width="30%" height="30%">
-    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/colorStyle.png" width="30%" height="30%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/userCore.png" width="32%" height="32%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/colorStyle.png" width="32%" height="32%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/ai.png" width="32%" height="32%">
+<p>
+
+<p>
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/music.png" width="30%" height="30%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/lyric.png" width="30%" height="30%">
+    <img src="https://github.com/gitSirzh/Nostalgia/blob/master/z_view/img/introduce/icons.png" width="30%" height="30%">
 <p>
 
 
